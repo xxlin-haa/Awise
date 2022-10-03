@@ -26,9 +26,7 @@ struct signInPage: View {
     var body: some View {
         
         ZStack {
-            Rectangle()
-            .fill(Gradient(colors: [.indigo, .pink]))
-            .ignoresSafeArea()
+          
             
             
             VStack{
@@ -36,23 +34,23 @@ struct signInPage: View {
                     .resizable()
                     .aspectRatio(contentMode: .fit)
                     .padding(.horizontal,35)
-    //                .padding(.vertical)
-
-                    
-                Spacer(minLength: 0)
+                    .padding(.vertical)
+                
+                Text("Housing starts with Awise")
+                    .font(.title)
+                    .fontWeight(.heavy)
+                    .foregroundColor(.black)
+                    .opacity(0.75)
+                
                 HStack{
                     
                     VStack(alignment: .leading, spacing: 12, content: {
                         
-                        Text("Login")
-                            .font(.title)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
                         
                         Text("Please log in to continue")
-                            .foregroundColor(Color.white.opacity(0.5))
+                            .foregroundColor(Color.black.opacity(0.5))
                             .fontWeight(.heavy)
-
+                        
                         
                     })
                     
@@ -62,109 +60,124 @@ struct signInPage: View {
                 .padding(.leading,15)
                 
                 HStack{
-                    
+                    //account
                     Image(systemName: "person.fill")
                         .font(.title2)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .frame(width: 35)
                     
                     TextField("Account", text: $account)
                         .autocapitalization(.none)
                         .fontWeight(.heavy)
-
+                    
                 }
                 .padding()
-                .background(Color.white.opacity(account == "" ? 0 : 0.12))
+                .background(Color.black.opacity(account == "" ? 0 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 
                 HStack{
-                    
+                    //password
                     Image(systemName: "lock.fill")
                         .font(.title2)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .frame(width: 35)
                     
                     SecureField("PASSWORD", text: $password)
                         .autocapitalization(.none)
                         .fontWeight(.heavy)
-
+                    
                 }
                 .padding()
-                .background(Color.white.opacity(password == "" ? 0 : 0.12))
+                .background(Color.black.opacity(password == "" ? 0 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 .padding(.top)
-                
                 HStack{
+                    Image(systemName: "globe.asia.australia.fill")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                        .frame(width: 35)
                     
                     Button(action: {}, label: {
                         NavigationLink(destination: EventScroll()){
-                    Image(systemName: "globe.asia.australia.fill")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                                .frame(width: 35)
-                        
-                        Text("Login to Main Page")
-                            .fontWeight(.heavy)
-                            .foregroundColor(.white.opacity(0.6))
-                            .padding(.vertical)
-                            .frame(width: UIScreen.main.bounds.width - 150)
-                            .background(Color("pink"))
-                            .clipShape(Capsule())
+                            ZStack{
+                                Capsule()
+                                    .foregroundColor(.blue.opacity(0.6))
+                                    .frame(width:180, height:60)
+                                Text("Login")
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(.black.opacity(0.6))
+                                    .padding(.vertical)
+                                    .frame(width: UIScreen.main.bounds.width - 150)
+                                    .background(Color("pink"))
+                                    .clipShape(Capsule())
+                            }
                         }
                     })
                 }
                 .padding(.top)
 
                 HStack{
-                    
+                    Image(systemName: "arrowshape.turn.up.right.circle.fill")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                        .frame(width: 35)
                     Button(action: {}, label: {
                         NavigationLink(destination: ForgetPassword()){
-                    Image(systemName: "arrowshape.turn.up.right.circle.fill")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                                .frame(width: 35)
-                        
-                        Text("Forget password")
-                            .fontWeight(.heavy)
-                            .foregroundColor(.white.opacity(0.6))
-                            .padding(.vertical)
-                            .frame(width: UIScreen.main.bounds.width - 150)
-                            .background(Color("pink"))
-                            .clipShape(Capsule())
+                            ZStack{
+                                Capsule()
+                                    .foregroundColor(.blue.opacity(0.6))
+                                    .frame(width:180, height:60)
+                                
+                
+                                
+                                Text("Forget password")
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(.black.opacity(0.6))
+                                    .padding(.vertical)
+                                    .frame(width: UIScreen.main.bounds.width - 150)
+                                    .background(Color("black"))
+                            }
                         }
                     })
+                    .clipShape(Capsule())
                 }
-                .padding(.top)
+                .padding(.vertical)
 
                 
                 HStack{
-                    
-                    Button(action: {}, label: {
-                        NavigationLink(destination: SignUpPage()){
                     Image(systemName: "person.fill.badge.plus")
                                 .font(.title2)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .frame(width: 35)
-                        
-                        Text("Register")
-                            .fontWeight(.heavy)
-                            .foregroundColor(.white.opacity(0.6))
-                            .padding(.vertical)
-                            .frame(width: UIScreen.main.bounds.width - 150)
-                            .background(Color("pink"))
-                            .clipShape(Capsule())
+                    Button(action: {}, label: {
+                        NavigationLink(destination: SignUpPage()){
+                            ZStack{
+                                Capsule()
+                                .foregroundColor(.blue.opacity(0.6))
+                                .frame(width:180, height:60)
+                                
+                                Text("Register")
+                                    .clipShape(Capsule())
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(.black.opacity(0.6))
+                                    .padding(.vertical)
+                                    .frame(width: UIScreen.main.bounds.width - 150)
+                                    .background(Color("pink"))
+                            }
                         }
                     })
+                   
+                    }
                 }
-                .padding(.vertical)
+                .padding(.top)
                 
             }
         }
         
     }
-}
+
 struct SignUpPage: View {
     
     @State var account = ""
@@ -174,24 +187,22 @@ struct SignUpPage: View {
     var body: some View {
         
         ZStack {
-            Rectangle()
-            .fill(Gradient(colors: [.indigo, .pink]))
-            .ignoresSafeArea()
+
             
             
             VStack{
+
                
                 HStack{
-                    Image(systemName: "person.circle.fill")
+                Image("signup")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
-                        .foregroundColor(.white)
+                        .padding(.horizontal,35)
+                      .padding(.vertical)
 
-                        
-
-                    Text("Upload your Picture")
+                    Text("Greetings!")
                         .fontWeight(.heavy)
-                        .foregroundColor(.white.opacity(0.6))
+                        .foregroundColor(.black.opacity(0.6))
                         .background(Color("pink"))
                 }
                 .padding()
@@ -205,7 +216,7 @@ struct SignUpPage: View {
                     
                     Image(systemName: "person.fill")
                         .font(.title2)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .frame(width: 35)
                     
                     TextField("please enter you account", text: $account)
@@ -214,7 +225,7 @@ struct SignUpPage: View {
 
                 }
                 .padding()
-                .background(Color.white.opacity(account == "" ? 0 : 0.12))
+                .background(Color.black.opacity(account == "" ? 0 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 .padding(.bottom)
@@ -224,7 +235,7 @@ struct SignUpPage: View {
                     
                     Image(systemName: "lock.fill")
                         .font(.title2)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .frame(width: 35)
                     
                     SecureField("please enter you password", text: $password)
@@ -233,7 +244,7 @@ struct SignUpPage: View {
 
                 }
                 .padding()
-                .background(Color.white.opacity(password == "" ? 0 : 0.12))
+                .background(Color.black.opacity(password == "" ? 0 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 .padding(.bottom)
@@ -242,7 +253,7 @@ struct SignUpPage: View {
                     
                     Image(systemName: "lock.fill")
                         .font(.title2)
-                        .foregroundColor(.white)
+                        .foregroundColor(.black)
                         .frame(width: 35)
                     
                     SecureField("confirm you password", text: $confirmpassword)
@@ -251,30 +262,30 @@ struct SignUpPage: View {
 
                 }
                 .padding()
-                .background(Color.white.opacity(password == "" ? 0 : 0.12))
+                .background(Color.black.opacity(password == "" ? 0 : 0.12))
                 .cornerRadius(15)
                 .padding(.horizontal)
                 .padding(.bottom)
                 
-                HStack{
+            
                     
-                    Button(action: {}, label: {
+                Button(action: {}, label: {
                         NavigationLink(destination: EventScroll()){
                     Image(systemName: "globe.asia.australia.fill")
                                 .font(.title2)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .frame(width: 35)
                         
                         Text("Login to Main Page")
                             .fontWeight(.heavy)
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.black.opacity(0.6))
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 150)
-                            .background(Color("pink"))
+                            .background(Color("black"))
                             .clipShape(Capsule())
                         }
                     })
-                }
+            
                 .padding(.top)
 
        
@@ -284,12 +295,12 @@ struct SignUpPage: View {
                         NavigationLink(destination: signInPage()){
                     Image(systemName: "house.fill")
                                 .font(.title2)
-                                .foregroundColor(.white)
+                                .foregroundColor(.black)
                                 .frame(width: 35)
                         
                         Text("Log In page")
                             .fontWeight(.heavy)
-                            .foregroundColor(.white.opacity(0.6))
+                            .foregroundColor(.black.opacity(0.6))
                             .padding(.vertical)
                             .frame(width: UIScreen.main.bounds.width - 150)
                             .background(Color("pink"))
@@ -306,24 +317,21 @@ struct SignUpPage: View {
 }
 //Mainpage
 struct EventScroll: View {
-    var code: Array<Int> = [0]
-    var name: Array<String> = ["Spring Festival"]
-    var picture: Array<Int> = [0]
-    var culture: Array<String> = ["Chinese"]
-    var description: Array<String> = ["A fun event"]
-    var check_state: Array<Int> = [0]
-    var rej_reason: Array<String> = [""]
+   
     var body: some View {
         ScrollView {
             VStack {
                 
-                Section(header: Text("Chinese")){
-                    ForEach(1..<5){index in
+                Section(header: Text("Question")){
+                    NavigationLink(destination: Question()) {
+                        
                         
                     }
+
+                       
                 }
-                Section(header: Text("Korean")) {
-                    ForEach(1..<5){index in
+                
+                Section(header: Text("Roommate")) {
                         
                     }
                     
@@ -334,7 +342,6 @@ struct EventScroll: View {
         }
         
     }
-}
 
 struct Question: View{
             
@@ -373,17 +380,58 @@ struct ForgetPassword: View{
             @State var confirmPassword = ""
             var body: some View {
                 ZStack{
-                    
-                    
-                    
+                    Rectangle()
+                    .fill(Gradient(colors: [.indigo, .pink]))
+                    .ignoresSafeArea()
                     VStack {
                         
+                        HStack{
+                            
+                            Image(systemName: "person.fill")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                .frame(width: 35)
+                            
+                            TextField("please enter you account", text: $account)
+                                .autocapitalization(.none)
+                                .fontWeight(.heavy)
+
+                        }
                         
                     }
                 }
             }
         }
     
+struct ForgetPassword2: View{
+            @State var account = ""
+            @State var password = ""
+            @State var confirmPassword = ""
+            var body: some View {
+                ZStack{
+                    Rectangle()
+                    .fill(Gradient(colors: [.indigo, .pink]))
+                    .ignoresSafeArea()
+                    VStack {
+                        
+                        HStack{
+                            
+                            Image(systemName: "person.fill")
+                                .font(.title2)
+                                .foregroundColor(.white)
+                                .frame(width: 35)
+                            
+                            TextField("please enter you account", text: $account)
+                                .autocapitalization(.none)
+                                .fontWeight(.heavy)
+
+                        }
+                        
+                    }
+                }
+            }
+        }
+
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {
             ContentView()
