@@ -2,7 +2,7 @@
 //  ContentView.swift
 //  Awise
 //
-//  Created by liu zhenke on 10/2/22.
+//  Created by liu zhenke, harry Chen on 10/2/22.
 //
 
 import SwiftUI
@@ -100,7 +100,7 @@ struct signInPage: View {
                         .frame(width: 35)
                     
                     Button(action: {}, label: {
-                        NavigationLink(destination: EventScroll()){
+                        NavigationLink(destination: Mainpage()){
                             ZStack{
                                 Capsule()
                                     .foregroundColor(.blue.opacity(0.6))
@@ -177,7 +177,7 @@ struct signInPage: View {
         }
         
     }
-
+//Sign Up Page
 struct SignUpPage: View {
     
     @State var account = ""
@@ -268,46 +268,54 @@ struct SignUpPage: View {
                 .padding(.bottom)
                 
             
-                    
-                Button(action: {}, label: {
-                        NavigationLink(destination: EventScroll()){
-                    Image(systemName: "globe.asia.australia.fill")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                                .frame(width: 35)
-                        
-                        Text("Login to Main Page")
-                            .fontWeight(.heavy)
-                            .foregroundColor(.black.opacity(0.6))
-                            .padding(.vertical)
-                            .frame(width: UIScreen.main.bounds.width - 150)
-                            .background(Color("black"))
-                            .clipShape(Capsule())
-                        }
-                    })
-            
-                .padding(.top)
-
-       
                 HStack{
+                    Image(systemName: "globe.asia.australia.fill")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                        .frame(width: 35)
                     
                     Button(action: {}, label: {
-                        NavigationLink(destination: signInPage()){
-                    Image(systemName: "house.fill")
-                                .font(.title2)
-                                .foregroundColor(.black)
-                                .frame(width: 35)
-                        
-                        Text("Log In page")
-                            .fontWeight(.heavy)
-                            .foregroundColor(.black.opacity(0.6))
-                            .padding(.vertical)
-                            .frame(width: UIScreen.main.bounds.width - 150)
-                            .background(Color("pink"))
-                            .clipShape(Capsule())
+                        NavigationLink(destination: Mainpage()){
+                            ZStack{
+                                Capsule()
+                                    .foregroundColor(.blue.opacity(0.6))
+                                    .frame(width:180, height:60)
+                                Text("Start your journey")
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(.black.opacity(0.6))
+                                    .padding(.vertical)
+                                    .frame(width: UIScreen.main.bounds.width - 150)
+                                    .background(Color("pink"))
+                                    .clipShape(Capsule())
+                            }
                         }
                     })
                 }
+                .padding(.top)
+                HStack{
+                    Image(systemName: "house.fill")
+                        .font(.title2)
+                        .foregroundColor(.black)
+                        .frame(width: 35)
+                    
+                    Button(action: {}, label: {
+                        NavigationLink(destination: Mainpage()){
+                            ZStack{
+                                Capsule()
+                                    .foregroundColor(.blue.opacity(0.6))
+                                    .frame(width:180, height:60)
+                                Text("Already a member ")
+                                    .fontWeight(.heavy)
+                                    .foregroundColor(.black.opacity(0.6))
+                                    .padding(.vertical)
+                                    .frame(width: UIScreen.main.bounds.width - 150)
+                                    .background(Color("pink"))
+                                    .clipShape(Capsule())
+                            }
+                        }
+                    })
+                }
+
                 .padding(.vertical)
                 
             }
@@ -316,7 +324,7 @@ struct SignUpPage: View {
     }
 }
 //Mainpage
-struct EventScroll: View {
+struct Mainpage: View {
    
     var body: some View {
         ScrollView {
@@ -375,33 +383,62 @@ struct Profile: View{
         
         
 struct ForgetPassword: View{
-            @State var account = ""
-            @State var password = ""
-            @State var confirmPassword = ""
-            var body: some View {
-                ZStack{
-                    Rectangle()
-                    .fill(Gradient(colors: [.indigo, .pink]))
-                    .ignoresSafeArea()
-                    VStack {
+    
+    @State var username: String = ""
+    
+    var body: some View{
+        VStack(alignment: .leading) {
                         
-                        HStack{
-                            
-                            Image(systemName: "person.fill")
-                                .font(.title2)
-                                .foregroundColor(.white)
-                                .frame(width: 35)
-                            
-                            TextField("please enter you account", text: $account)
-                                .autocapitalization(.none)
-                                .fontWeight(.heavy)
+            Spacer()
+                        
+            Text("Reset your password")
+                .font(.title)
+                .fontWeight(.bold)
+                .padding(.bottom)
+                        
+            Text("Please enter the email address associated with your account. We’ll send you an email with instructions on how to reset your password.")
+                .font(.subheadline)
+                .fontWeight(.medium)
+                .multilineTextAlignment(.leading)
 
-                        }
+            Spacer()
                         
-                    }
+            Text("Email")
+                .fontWeight(.semibold)
+                .foregroundColor(Color.black)
+                .font(.headline)
+                .padding(.bottom)
+                        
+            GroupBox() {
+                TextField("Enter your email address", text: $username)
+            }
+            .padding(.bottom)
+                        
+            Button(action: {}) {
+                //send email to 'username' email address
+                ZStack{
+                    Capsule()
+                        .foregroundColor(.blue)
+                        .frame(width: 150, height: 50)
+                    Text("Send Email")
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .foregroundColor(/*@START_MENU_TOKEN@*/.white/*@END_MENU_TOKEN@*/)
                 }
             }
+            Spacer()
         }
+        /*.toolbar{
+            ToolbarItemGroup(placement: .navigationBarLeading){
+                Button(action: {}) {
+                    Image(systemName: "arrow.backward")
+                }
+            }
+        }*/
+        .padding()
+    }
+}
+
     
 struct ForgetPassword2: View{
             @State var account = ""
