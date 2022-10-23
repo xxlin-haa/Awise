@@ -1,2 +1,2 @@
 # Awise
-For CS-370. I have manually put all code in the main git directory. 
+For CS-370. Contributors are Harry Chen, Blake Han, and Zhenke Liu
