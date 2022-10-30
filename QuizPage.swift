@@ -16,6 +16,7 @@ struct QuizPage: View {
 }
 struct Quiz1: View{
     @State var name = ""
+    
     var body: some View{
         VStack{
             Text("Profile")
@@ -1195,6 +1196,21 @@ struct Quiz19: View{
                             .foregroundColor(.blue.opacity(0.6))
                             .frame(width:180, height:60)
                         Text("Previous Question")
+                            .fontWeight(.heavy)
+                            .foregroundColor(.black.opacity(0.6))
+                            .padding(.vertical)
+                            .frame(width: UIScreen.main.bounds.width - 150)
+                            .background(Color("black"))
+                    }
+                }
+            })
+            Button(action: {}, label: {
+                NavigationLink(destination: HomeView()){
+                    ZStack{
+                        Capsule()
+                            .foregroundColor(.blue.opacity(0.6))
+                            .frame(width:180, height:60)
+                        Text("Finished!")
                             .fontWeight(.heavy)
                             .foregroundColor(.black.opacity(0.6))
                             .padding(.vertical)
