@@ -1,0 +1,76 @@
+import SwiftUI
+
+struct SideMenuView: View{
+    @Binding var isShowing: Bool
+    var body: some View{
+            ZStack(alignment: .leading){
+                //call Bar
+                GeometryReader{_ in
+                    VStack{
+                        SideMenuHeaderView(isShowing: $isShowing)
+                            .frame(height:240)
+                        
+                        Group{
+                            NavigationLink(destination: Quiz1()){
+                                HStack(spacing:22){
+                                    Image(systemName: "list.bullet")
+                                        .resizable()
+                                        .frame(width:25,height:25)
+                                        .foregroundColor(.yellow)
+                                    Text("Quiz")
+                                    
+                                    Spacer()
+                                    
+                                }
+                            }
+                            .padding(.top,25)
+                            
+                            NavigationLink(destination: Profile()){
+                                HStack(spacing:22){
+                                    Image(systemName: "person")
+                                        .resizable()
+                                        .frame(width:25,height:25)
+                                        .foregroundColor(.pink)
+                                    Text("Profile")
+                                    
+                                    Spacer()
+                                }
+                            }
+                            .padding(.top,25)
+                            
+                            NavigationLink(destination: SettingView()){
+                                HStack(spacing:22){
+                                    Image(systemName: "pencil")
+                                        .resizable()
+                                        .frame(width:25,height:25)
+                                        .foregroundColor(.yellow)
+                                    Text("Setting")
+                                    
+                                    Spacer()
+                                }
+                            }
+                            .padding(.top,25)
+                            
+                            NavigationLink(destination: signInPage()){
+                                HStack(spacing:22){
+                                    Image(systemName: "figure.wave")
+                                        .resizable()
+                                        .frame(width:25,height:25)
+                                        .foregroundColor(.yellow)
+                                    Text("Logout")
+                                    
+                                    Spacer()
+                                }
+                            }
+                            .padding(.top,25)
+                            
+                        }
+                        
+                        Spacer()
+                    }
+                }
+            }
+            .padding(.horizontal,20)
+            .navigationBarHidden(true)
+    }
+}
