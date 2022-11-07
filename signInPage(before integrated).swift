@@ -131,5 +131,5 @@ struct signInPage: View {
                 }
                 .padding(.top)
             }
-        }
+    }
     }
