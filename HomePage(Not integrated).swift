@@ -1,5 +1,42 @@
 import SwiftUI
 //Homepage view
+struct HomePageView: View {
+    @State var isShowing = false
+    @State var dark = false
+    var body: some View{
+        //NavigationView{
+            ZStack(){
+                if isShowing{
+                    SideMenuHeaderView(dark: self.$dark, isShowing: self.$isShowing)
+                        .preferredColorScheme(self.dark ? .dark : .light)
+                }
+                HomeView()
+                    .cornerRadius(isShowing ? 20 : 10)
+                    .offset(x:isShowing ? 300 : 0, y:isShowing ? 44:0)
+                    .scaleEffect(isShowing ? 0.8 : 1)
+                    .toolbar{
+                        ToolbarItemGroup(placement:.navigationBarTrailing){
+                            Button(action:{
+                                withAnimation(.spring()){
+                                    isShowing.toggle()
+                            
+                                }
+                            },
+                                           label:{
+                                Image(systemName: "line.3.horizontal")
+                                    .foregroundColor(.black)
+                                    .padding(.trailing)
+                                    .frame(width: 10.0, height: 10.0)
+                                               
+                                           })
+                        }
+                    }
+                    .navigationTitle("Roommate")
+            }
+    }
+}
+
+
 struct HomeView: View{
     let cardGradient = Gradient(colors: [Color.black.opacity(0), Color.black.opacity(0.5)])
     var body: some View{
